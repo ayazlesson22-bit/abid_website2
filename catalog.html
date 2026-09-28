@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Brand Timepieces | Abid Store Catalog</title>
+  <meta name="description" content="Explore certified authentic Rolex, Patek Philippe, Audemars Piguet, Omega, Cartier, and Breitling watches at Abid Store.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/catalog.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-highlights">
+        <span><i class="fas fa-shield-alt"></i> 100% Certified Authentic</span>
+        <span><i class="fas fa-plane"></i> Free Insured Armored Delivery</span>
+      </div>
+      <div class="top-bar-actions">
+        <div id="supabase-pill" class="supabase-pill">
+          <span class="dot"></span> Supabase Connected
+        </div>
+        <select class="currency-select" aria-label="Select Currency">
+          <option value="USD">USD ($)</option>
+          <option value="EUR">EUR (€)</option>
+          <option value="GBP">GBP (£)</option>
+          <option value="AED">AED (د.إ)</option>
+        </select>
+        <a href="admin.html" style="color:var(--text-muted); font-size:0.75rem;"><i class="fas fa-sliders-h"></i> Store Builder</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo-link">
+        <img src="assets/logo.svg" alt="Abid Store" class="brand-logo-img">
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="catalog.html" class="nav-link active">All Brands</a>
+        <a href="catalog.html?category=Diver" class="nav-link">Diver</a>
+        <a href="catalog.html?category=Chronograph" class="nav-link">Chronographs</a>
+        <a href="watch-builder.html" class="nav-link">
+          Watch Builder <span class="nav-badge-builder">CUSTOM</span>
+        </a>
+        <a href="index.html#about-us" class="nav-link">Maison</a>
+      </nav>
+      <div class="header-actions">
+        <a href="#" class="header-icon-btn cart-open-trigger" title="Shopping Bag">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-counter">0</span>
+        </a>
+        <button class="mobile-menu-toggle" aria-label="Open Navigation Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Catalog Banner -->
+  <div class="catalog-banner">
+    <div class="container">
+      <span class="section-subtitle">Haute Horlogerie Inventory</span>
+      <h1>All Brand <span class="gold-text">Watch Vault</span></h1>
+      <p style="color:var(--text-muted); max-width:600px; margin:0 auto;">
+        Browse prestigious timepieces from the world's most renowned Swiss & Japanese manufactures. Synchronized with live Supabase database storage.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Catalog Content -->
+  <div class="container">
+    <div class="catalog-layout">
+      <!-- Sidebar Filters -->
+      <aside class="filters-sidebar">
+        <div class="filter-header">
+          <h3>Filters</h3>
+          <span class="reset-filters-btn" onclick="resetAllFilters()">Reset All</span>
+        </div>
+
+        <!-- Search in Catalog -->
+        <div class="filter-group">
+          <div class="filter-title">Search Vault</div>
+          <input type="text" id="catalog-search-input" placeholder="Rolex, Chronograph, etc." style="width:100%; background:var(--bg-card); border:1px solid var(--border-subtle); color:#fff; padding:8px 12px; border-radius:var(--radius-sm); font-size:0.85rem; outline:none;">
+        </div>
+
+        <!-- Brand Filter -->
+        <div class="filter-group">
+          <div class="filter-title">Manufacture / Brand</div>
+          <div class="filter-options-list">
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="brand" data-brand="Rolex"> Rolex
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="brand" data-brand="Patek Philippe"> Patek Philippe
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="brand" data-brand="Audemars Piguet"> Audemars Piguet
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="brand" data-brand="Omega"> Omega
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="brand" data-brand="Cartier"> Cartier
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="brand" data-brand="TAG Heuer"> TAG Heuer
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="brand" data-brand="Breitling"> Breitling
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="brand" data-brand="IWC Schaffhausen"> IWC Schaffhausen
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="brand" data-brand="Jaeger-LeCoultre"> Jaeger-LeCoultre
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="brand" data-brand="Tissot"> Tissot
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="brand" data-brand="Seiko"> Seiko
+            </label>
+          </div>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="filter-group">
+          <div class="filter-title">Style & Category</div>
+          <div class="filter-options-list">
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="category" data-category="Diver"> Diver / Marine
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="category" data-category="Chronograph"> Chronograph / Racing
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="category" data-category="Classic"> Classic / Dress
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="category" data-category="Luxury Sport"> Luxury Sport
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="category" data-category="Aviation"> Aviation / Pilot
+            </label>
+          </div>
+        </div>
+
+        <!-- Movement Filter -->
+        <div class="filter-group">
+          <div class="filter-title">Movement Type</div>
+          <div class="filter-options-list">
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="movement" data-movement="Automatic"> Automatic / Self-winding
+            </label>
+            <label class="custom-checkbox-label">
+              <input type="checkbox" data-filter-type="movement" data-movement="Manual"> Manual-winding
+            </label>
+          </div>
+        </div>
+
+        <!-- Max Price Slider -->
+        <div class="filter-group">
+          <div class="filter-title">Maximum Price</div>
+          <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">
+            <span>Up to:</span>
+            <strong id="price-slider-val" style="color:var(--gold-light);">$100,000</strong>
+          </div>
+          <input type="range" id="price-slider" class="price-range-slider" min="500" max="100000" step="500" value="100000">
+        </div>
+      </aside>
+
+      <!-- Main Catalog Display Area -->
+      <main>
+        <!-- Toolbar -->
+        <div class="catalog-toolbar">
+          <div id="catalog-count" class="results-count">Loading timepieces...</div>
+          <div class="toolbar-controls">
+            <label for="sort-select" style="font-size:0.8rem; color:var(--text-muted);">Sort By:</label>
+            <select id="sort-select" class="sort-select">
+              <option value="featured">Featured First</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+            </select>
+            <div class="view-mode-toggle">
+              <button id="view-grid-btn" class="view-mode-btn active" title="Grid View"><i class="fas fa-th-large"></i></button>
+              <button id="view-list-btn" class="view-mode-btn" title="List View"><i class="fas fa-list"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watch Grid -->
+        <div id="catalog-grid" class="products-grid">
+          <!-- Injected dynamically by catalog.js -->
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="index.html">
+            <img src="assets/logo.svg" alt="Abid Store" style="height:44px; width:auto; margin-bottom:16px;">
+          </a>
+          <p>The definitive luxury horology marketplace with direct Supabase cloud database integration.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalog.html">All Brands</a></li>
+            <li><a href="watch-builder.html">Watch Builder</a></li>
+            <li><a href="cart.html">Shopping Bag</a></li>
+            <li><a href="admin.html">Store Builder / Admin</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Brands</h4>
+          <ul>
+            <li><a href="catalog.html?brand=Rolex">Rolex</a></li>
+            <li><a href="catalog.html?brand=Patek Philippe">Patek Philippe</a></li>
+            <li><a href="catalog.html?brand=Audemars Piguet">Audemars Piguet</a></li>
+            <li><a href="catalog.html?brand=Omega">Omega</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Security</h4>
+          <p style="font-size:0.8rem; line-height:1.6;">
+            All transactions are protected by end-to-end encryption. Supabase Row Level Security ensures verified client privacy.
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Abid Store Haute Horlogerie.</div>
+        <a href="admin.html" style="color:var(--gold-primary);">Store Builder Admin</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-out Cart Drawer -->
+  <div id="cart-drawer-backdrop" class="drawer-backdrop"></div>
+  <aside id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3>Your Shopping Bag</h3>
+      <button id="cart-drawer-close" class="close-drawer-btn">&times;</button>
+    </div>
+    <div id="cart-drawer-items" class="cart-drawer-body"></div>
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-line">
+        <span>Subtotal:</span>
+        <span id="cart-drawer-subtotal">$0</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <a href="cart.html" class="btn btn-primary" style="width:100%;">
+          <i class="fas fa-lock"></i> Checkout
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Supabase CDN & Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/products-data.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/catalog.js"></script>
+</body>
+</html>

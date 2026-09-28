@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store Builder & Admin | Abid Store Haute Horlogerie</title>
+  <meta name="description" content="Manage products, orders, watch customizer configurations and Supabase database connection for Abid Store.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- Admin Header Strip -->
+  <div class="admin-header-strip">
+    <div class="container admin-title-row">
+      <div style="display:flex; align-items:center; gap:20px;">
+        <a href="index.html">
+          <img src="assets/logo.svg" alt="Abid Store" style="height:44px; width:auto;">
+        </a>
+        <div style="border-left:1px solid var(--border-subtle); padding-left:16px;">
+          <h1 style="font-size:1.4rem;">Store Builder & Admin Panel</h1>
+          <span style="font-size:0.75rem; color:var(--gold-primary); text-transform:uppercase; letter-spacing:1.5px;">Master Control Center</span>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:16px;">
+        <a href="index.html" class="btn btn-outline btn-sm"><i class="fas fa-store"></i> View Storefront</a>
+        <a href="watch-builder.html" class="btn btn-outline btn-sm"><i class="fas fa-tools"></i> Watch Builder</a>
+        <button class="btn btn-primary btn-sm" id="open-add-product-btn">
+          <i class="fas fa-plus"></i> Add New Watch
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="padding-top: 36px; padding-bottom: 80px;">
+
+    <!-- Supabase Diagnostic Banner -->
+    <div id="admin-supabase-banner" class="supabase-banner">
+      <!-- Injected by admin.js -->
+    </div>
+
+    <!-- Stat Metric Cards -->
+    <div class="admin-stats-cards">
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon"><i class="fas fa-clock"></i></div>
+        <div class="admin-stat-info">
+          <h3 id="admin-product-count">12</h3>
+          <p>Vault Timepieces</p>
+        </div>
+      </div>
+
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon"><i class="fas fa-receipt"></i></div>
+        <div class="admin-stat-info">
+          <h3 id="admin-order-count">0</h3>
+          <p>Customer Orders</p>
+        </div>
+      </div>
+
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon"><i class="fas fa-gem"></i></div>
+        <div class="admin-stat-info">
+          <h3>100%</h3>
+          <p>Authenticity Provenance</p>
+        </div>
+      </div>
+
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon"><i class="fas fa-server"></i></div>
+        <div class="admin-stat-info">
+          <h3 style="font-size:1.1rem; color:#34D399;">Active</h3>
+          <p>Supabase btuhffpkirh...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="admin-tabs">
+      <button class="admin-tab-btn active" data-tab="inventory">
+        <i class="fas fa-boxes"></i> Watch Inventory
+      </button>
+      <button class="admin-tab-btn" data-tab="orders">
+        <i class="fas fa-shopping-cart"></i> Orders Placed
+      </button>
+      <button class="admin-tab-btn" data-tab="custom-builds">
+        <i class="fas fa-tools"></i> Bespoke Custom Builds
+      </button>
+      <button class="admin-tab-btn" data-tab="database">
+        <i class="fas fa-database"></i> Supabase Setup & SQL
+      </button>
+    </div>
+
+    <!-- TAB 1: Inventory Table -->
+    <div id="tab-inventory" class="admin-tab-content" style="display:block;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h3 style="font-size:1.2rem;">All Watches in Catalog</h3>
+        <button class="btn btn-outline btn-sm" onclick="loadAdminProducts()">
+          <i class="fas fa-sync-alt"></i> Refresh Catalog
+        </button>
+      </div>
+
+      <div class="data-table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Timepiece / Reference</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Movement</th>
+              <th>Stock Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-products-tbody">
+            <!-- Injected by admin.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 2: Orders Table -->
+    <div id="tab-orders" class="admin-tab-content" style="display:none;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h3 style="font-size:1.2rem;">Customer Acquisitions & Orders</h3>
+        <button class="btn btn-outline btn-sm" onclick="loadAdminOrders()">
+          <i class="fas fa-sync-alt"></i> Refresh Orders
+        </button>
+      </div>
+
+      <div class="data-table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Order Number</th>
+              <th>Client Information</th>
+              <th>Items Ordered</th>
+              <th>Total Paid</th>
+              <th>Order Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="admin-orders-tbody">
+            <!-- Injected by admin.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 3: Custom Builds -->
+    <div id="tab-custom-builds" class="admin-tab-content" style="display:none;">
+      <h3 style="font-size:1.2rem; margin-bottom:16px;">Bespoke Watches Configured by Clients</h3>
+      <div class="data-table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Config Ref</th>
+              <th>Customer</th>
+              <th>Case & Dial</th>
+              <th>Bezel & Strap</th>
+              <th>Movement</th>
+              <th>Laser Engraving</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody id="admin-custom-builds-tbody">
+            <tr>
+              <td colspan="7" style="text-align:center; padding:30px;">
+                Configurations saved from the <a href="watch-builder.html" style="color:var(--gold-primary);">Watch Builder</a> will appear here in real-time.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 4: Database & SQL Setup -->
+    <div id="tab-database" class="admin-tab-content" style="display:none;">
+      <div style="background:var(--bg-secondary); border:1px solid var(--border-gold); border-radius:var(--radius-lg); padding:32px; max-width:850px;">
+        <span class="section-subtitle">Supabase Project Overview</span>
+        <h2 style="margin:8px 0 16px;">Database Credentials & Schema</h2>
+        
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px; font-size:0.85rem;">
+          <div style="background:var(--bg-card); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border-subtle);">
+            <span style="color:var(--text-muted); display:block;">Supabase Project URL:</span>
+            <code style="color:var(--gold-light); word-break:break-all;">https://btuhffpkirhviftczgeu.supabase.co</code>
+          </div>
+          <div style="background:var(--bg-card); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border-subtle);">
+            <span style="color:var(--text-muted); display:block;">Publishable Key ID:</span>
+            <code style="color:var(--gold-light); word-break:break-all;">sb_publishable_XXkwsGlSsssTMT4mT_nFqw_A2_I6vGE</code>
+          </div>
+        </div>
+
+        <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6; margin-bottom:24px;">
+          To ensure all live orders and newly created products are written permanently into PostgreSQL tables, open your Supabase SQL editor and execute the database script below:
+        </p>
+
+        <button class="btn btn-primary" onclick="openSqlModal()">
+          <i class="fas fa-code"></i> View & Copy Complete SQL Schema (1-Click)
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Add Product Modal -->
+  <div id="add-product-modal" class="modal-overlay">
+    <div class="modal-content-box" style="max-width:680px;">
+      <button id="close-add-product-btn" class="modal-close-btn">&times;</button>
+      <span class="section-subtitle">Inventory Management</span>
+      <h2 style="margin:6px 0 20px;">Add New Luxury Watch</h2>
+
+      <form id="add-product-form">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="admin-form-group">
+            <label>Brand / Manufacture *</label>
+            <input type="text" id="p-brand" class="admin-input" required placeholder="e.g. Rolex, Omega, Patek Philippe">
+          </div>
+          <div class="admin-form-group">
+            <label>Model Reference *</label>
+            <input type="text" id="p-model" class="admin-input" required placeholder="e.g. Submariner 126610LN">
+          </div>
+        </div>
+
+        <div class="admin-form-group">
+          <label>Full Watch Title *</label>
+          <input type="text" id="p-title" class="admin-input" required placeholder="e.g. Rolex Submariner Date 41 Black Dial">
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
+          <div class="admin-form-group">
+            <label>Price (USD $) *</label>
+            <input type="number" id="p-price" class="admin-input" required step="1" placeholder="14500">
+          </div>
+          <div class="admin-form-group">
+            <label>Category *</label>
+            <select id="p-category" class="admin-select">
+              <option value="Diver">Diver</option>
+              <option value="Chronograph">Chronograph</option>
+              <option value="Classic">Classic / Dress</option>
+              <option value="Luxury Sport">Luxury Sport</option>
+              <option value="Aviation">Aviation / Pilot</option>
+            </select>
+          </div>
+          <div class="admin-form-group">
+            <label>Quantity *</label>
+            <input type="number" id="p-stock" class="admin-input" value="3">
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
+          <div class="admin-form-group">
+            <label>Movement</label>
+            <input type="text" id="p-movement" class="admin-input" value="Automatic Swiss Calibre">
+          </div>
+          <div class="admin-form-group">
+            <label>Case Material</label>
+            <input type="text" id="p-material" class="admin-input" value="Oystersteel 904L">
+          </div>
+          <div class="admin-form-group">
+            <label>Case Diameter</label>
+            <input type="text" id="p-diameter" class="admin-input" value="41mm">
+          </div>
+        </div>
+
+        <div class="admin-form-group">
+          <label>Water Resistance</label>
+          <input type="text" id="p-water" class="admin-input" value="300m / 1000ft">
+        </div>
+
+        <div class="admin-form-group">
+          <label>High-Res Image URL *</label>
+          <input type="url" id="p-image" class="admin-input" required value="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1000&q=80">
+        </div>
+
+        <div class="admin-form-group">
+          <label>Watch Description</label>
+          <textarea id="p-desc" class="admin-textarea" rows="3" placeholder="Enter timepiece description, provenance, and condition."></textarea>
+        </div>
+
+        <div class="admin-form-group" style="display:flex; align-items:center; gap:10px;">
+          <input type="checkbox" id="p-featured" style="width:18px; height:18px; accent-color:var(--gold-primary);">
+          <label for="p-featured" style="margin:0; text-transform:none; font-size:0.85rem;">Feature on Homepage Carousel</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; padding:12px;">
+          <i class="fas fa-plus"></i> Save to Vault & Sync with Supabase
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Supabase CDN & Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/products-data.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

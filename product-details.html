@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timepiece Details | Abid Store Haute Horlogerie</title>
+  <meta name="description" content="View specifications, movement details, and acquire authentic brand timepieces at Abid Store.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/catalog.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-highlights">
+        <span><i class="fas fa-shield-alt"></i> 100% Certified Authentic</span>
+        <span><i class="fas fa-plane"></i> Free Insured Armored Courier</span>
+      </div>
+      <div class="top-bar-actions">
+        <div id="supabase-pill" class="supabase-pill">
+          <span class="dot"></span> Supabase Connected
+        </div>
+        <select class="currency-select">
+          <option value="USD">USD ($)</option>
+          <option value="EUR">EUR (€)</option>
+          <option value="GBP">GBP (£)</option>
+          <option value="AED">AED (د.إ)</option>
+        </select>
+        <a href="admin.html" style="color:var(--text-muted); font-size:0.75rem;"><i class="fas fa-sliders-h"></i> Admin</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo-link">
+        <img src="assets/logo.svg" alt="Abid Store" class="brand-logo-img">
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="catalog.html" class="nav-link">All Brands</a>
+        <a href="watch-builder.html" class="nav-link">Watch Builder</a>
+        <a href="cart.html" class="nav-link">Shopping Bag</a>
+        <a href="admin.html" class="nav-link">Store Builder</a>
+      </nav>
+      <div class="header-actions">
+        <a href="#" class="header-icon-btn cart-open-trigger" title="Shopping Bag">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-counter">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Product Detail Section -->
+  <section class="product-detail-section">
+    <div class="container">
+      <div id="product-detail-container" class="product-detail-grid">
+        <div style="grid-column: 1/-1; text-align:center; padding:60px;">
+          <i class="fas fa-spinner fa-spin" style="font-size:2.5rem; color:var(--gold-primary);"></i>
+          <p style="margin-top:16px;">Loading timepiece specifications from Supabase...</p>
+        </div>
+      </div>
+
+      <!-- Related Timepieces -->
+      <div style="margin-top:90px; border-top:1px solid var(--border-subtle); padding-top:60px;">
+        <div class="section-head">
+          <span class="section-subtitle">Complementary Timepieces</span>
+          <h2 class="section-title">You May Also Admire</h2>
+        </div>
+        <div id="related-watches-grid" class="products-grid">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Abid Store Haute Horlogerie.</div>
+        <a href="catalog.html">Back to Catalog</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-out Cart Drawer -->
+  <div id="cart-drawer-backdrop" class="drawer-backdrop"></div>
+  <aside id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3>Your Shopping Bag</h3>
+      <button id="cart-drawer-close" class="close-drawer-btn">&times;</button>
+    </div>
+    <div id="cart-drawer-items" class="cart-drawer-body"></div>
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-line">
+        <span>Subtotal:</span>
+        <span id="cart-drawer-subtotal">$0</span>
+      </div>
+      <a href="cart.html" class="btn btn-primary" style="width:100%;">Proceed to Checkout</a>
+    </div>
+  </aside>
+
+  <!-- Supabase CDN & JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/products-data.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    async function loadProductDetail() {
+      const container = document.getElementById("product-detail-container");
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get("id") || "rolex-sub-kermit";
+
+      const product = await window.abidSupabase.getProductById(id);
+      if (!product) {
+        container.innerHTML = `
+          <div style="grid-column:1/-1; text-align:center; padding:60px;">
+            <h3>Timepiece Not Found</h3>
+            <p style="color:var(--text-muted); margin:12px 0 20px;">The requested watch reference is not currently in the vault.</p>
+            <a href="catalog.html" class="btn btn-primary">Browse All Brands</a>
+          </div>
+        `;
+        return;
+      }
+
+      document.title = `${product.title} | Abid Store`;
+
+      container.innerHTML = `
+        <!-- Left: Image Gallery -->
+        <div class="product-gallery">
+          <div class="main-image-display">
+            <img id="main-watch-img" src="${product.image_url}" alt="${product.title}">
+          </div>
+          <div class="gallery-thumbs">
+            <div class="gallery-thumb active" onclick="document.getElementById('main-watch-img').src='${product.image_url}'">
+              <img src="${product.image_url}" alt="Thumbnail">
+            </div>
+            <div class="gallery-thumb" onclick="document.getElementById('main-watch-img').src='https://images.unsplash.com/photo-1547996160-71dfabb1ab2d?auto=format&fit=crop&w=1000&q=80'">
+              <img src="https://images.unsplash.com/photo-1547996160-71dfabb1ab2d?auto=format&fit=crop&w=1000&q=80" alt="Alternate View">
+            </div>
+            <div class="gallery-thumb" onclick="document.getElementById('main-watch-img').src='https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1000&q=80'">
+              <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1000&q=80" alt="Alternate View">
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Info & Actions -->
+        <div class="product-info-panel">
+          <span class="detail-brand-badge">${product.brand}</span>
+          <h1>${product.title}</h1>
+          <div style="color:var(--text-muted); font-size:0.9rem; margin-bottom:12px;">Reference: <strong>${product.model || 'Master Series'}</strong></div>
+
+          <div class="stock-indicator">
+            <span class="dot"></span> ${product.in_stock !== false ? 'In Vault & Available for Armored Courier Delivery' : 'Sold Out'}
+          </div>
+
+          <div class="detail-price-box">
+            <span class="detail-current-price">${formatPrice(product.price)}</span>
+            ${product.original_price ? `<span style="font-size:1.1rem; color:var(--text-muted); text-decoration:line-through;">${formatPrice(product.original_price)}</span>` : ''}
+          </div>
+
+          <p style="color:#C4C9D4; line-height:1.7; font-size:0.95rem; margin-bottom:24px;">
+            ${product.description || 'Masterfully engineered luxury wristwatch with superlative chronometer certification and certified provenance.'}
+          </p>
+
+          <!-- Specifications Table -->
+          <h3 style="font-size:1.1rem; margin-bottom:12px; color:var(--gold-light);">Horological Specifications</h3>
+          <table class="detail-specs-table">
+            <tbody>
+              <tr><th>Manufacture:</th><td>${product.brand}</td></tr>
+              <tr><th>Calibre / Movement:</th><td>${product.movement || 'Automatic Swiss Movement'}</td></tr>
+              <tr><th>Case Material:</th><td>${product.case_material || 'Oystersteel'}</td></tr>
+              <tr><th>Case Diameter:</th><td>${product.case_diameter || '41mm'}</td></tr>
+              <tr><th>Dial Specification:</th><td>${product.dial_color || 'Sunburst'}</td></tr>
+              <tr><th>Strap / Bracelet:</th><td>${product.strap_material || 'Steel Bracelet'}</td></tr>
+              <tr><th>Water Resistance:</th><td>${product.water_resistance || '100m / 330ft'}</td></tr>
+              <tr><th>Warranty:</th><td>5-Year International Master Horologist Coverage</td></tr>
+            </tbody>
+          </table>
+
+          <!-- Actions -->
+          <div class="detail-actions-row">
+            <button class="btn btn-primary" style="flex:1;" onclick="CartService.addItem(${JSON.stringify(product).replace(/"/g, '&quot;')})">
+              <i class="fas fa-shopping-bag"></i> Add to Shopping Bag
+            </button>
+            <a href="cart.html" class="btn btn-outline" onclick="CartService.addItem(${JSON.stringify(product).replace(/"/g, '&quot;')})">
+              Acquire Now
+            </a>
+          </div>
+
+          <!-- Trust Badges -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:36px; padding-top:24px; border-top:1px solid var(--border-subtle); font-size:0.8rem; color:var(--text-muted);">
+            <div><i class="fas fa-shield-alt" style="color:var(--gold-primary); margin-right:6px;"></i> 100% Certified Authentic</div>
+            <div><i class="fas fa-box" style="color:var(--gold-primary); margin-right:6px;"></i> Original Box & Papers Included</div>
+            <div><i class="fas fa-truck" style="color:var(--gold-primary); margin-right:6px;"></i> Fully Insured Armored Courier</div>
+            <div><i class="fas fa-undo" style="color:var(--gold-primary); margin-right:6px;"></i> 14-Day Return Privilege</div>
+          </div>
+        </div>
+      `;
+
+      loadRelatedWatches(product.brand, product.id);
+    }
+
+    async function loadRelatedWatches(brand, currentId) {
+      const relatedGrid = document.getElementById("related-watches-grid");
+      if (!relatedGrid) return;
+
+      const all = await window.abidSupabase.getProducts();
+      const related = all.filter(w => String(w.id) !== String(currentId)).slice(0, 4);
+
+      relatedGrid.innerHTML = related.map(watch => `
+        <div class="watch-card">
+          <div class="watch-img-box">
+            <img src="${watch.image_url}" alt="${watch.title}">
+          </div>
+          <div class="watch-card-body">
+            <span class="watch-card-brand">${watch.brand}</span>
+            <h3 class="watch-card-title">${watch.title}</h3>
+            <div class="watch-card-footer">
+              <span class="current-price">${formatPrice(watch.price)}</span>
+              <a href="product-details.html?id=${watch.id}" class="card-action-btn" style="position:static;">
+                View
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    document.addEventListener("DOMContentLoaded", loadProductDetail);
+  </script>
+</body>
+</html>

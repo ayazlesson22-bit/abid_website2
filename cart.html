@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Bag & Checkout | Abid Store Haute Horlogerie</title>
+  <meta name="description" content="Review your selected luxury timepieces and proceed to encrypted checkout with Supabase order storage.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/catalog.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-highlights">
+        <span><i class="fas fa-lock"></i> 256-Bit Encrypted Secure Checkout</span>
+        <span><i class="fas fa-shield-alt"></i> Armored Delivery Transit Included</span>
+      </div>
+      <div class="top-bar-actions">
+        <div id="supabase-pill" class="supabase-pill">
+          <span class="dot"></span> Supabase Connected
+        </div>
+        <select class="currency-select">
+          <option value="USD">USD ($)</option>
+          <option value="EUR">EUR (€)</option>
+          <option value="GBP">GBP (£)</option>
+          <option value="AED">AED (د.إ)</option>
+        </select>
+        <a href="admin.html" style="color:var(--text-muted); font-size:0.75rem;"><i class="fas fa-sliders-h"></i> Admin</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo-link">
+        <img src="assets/logo.svg" alt="Abid Store" class="brand-logo-img">
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="catalog.html" class="nav-link">All Brands</a>
+        <a href="watch-builder.html" class="nav-link">Watch Builder</a>
+        <a href="cart.html" class="nav-link active">Shopping Bag</a>
+        <a href="admin.html" class="nav-link">Store Builder</a>
+      </nav>
+      <div class="header-actions">
+        <span class="cart-counter" style="position:static;">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cart Page Content -->
+  <div class="container" style="padding: 60px 24px 100px;">
+    <div style="margin-bottom: 40px; text-align: center;">
+      <span class="section-subtitle">Secure Acquisition</span>
+      <h1>Your <span class="gold-text">Shopping Bag</span></h1>
+    </div>
+
+    <!-- Empty State -->
+    <div id="cart-empty-state" style="display:none; text-align:center; padding:80px 20px; background:var(--bg-secondary); border:1px solid var(--border-subtle); border-radius:var(--radius-xl); max-width:600px; margin:0 auto;">
+      <i class="fas fa-shopping-bag" style="font-size:3.5rem; color:var(--gold-dark); margin-bottom:16px;"></i>
+      <h2>Your Shopping Bag is Empty</h2>
+      <p style="color:var(--text-muted); margin:12px 0 28px;">Discover our collection of prestigious timepieces or design your custom bespoke watch.</p>
+      <div style="display:flex; justify-content:center; gap:16px;">
+        <a href="catalog.html" class="btn btn-primary">Browse All Brands</a>
+        <a href="watch-builder.html" class="btn btn-outline">Launch Watch Builder</a>
+      </div>
+    </div>
+
+    <!-- Active Cart Content -->
+    <div id="cart-content-wrapper" style="display:grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: start;">
+      
+      <!-- Cart Table -->
+      <div style="background:var(--bg-secondary); border:1px solid var(--border-subtle); border-radius:var(--radius-lg); overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+          <thead>
+            <tr style="border-bottom:1px solid var(--border-subtle); background:rgba(0,0,0,0.3);">
+              <th style="padding:18px 24px; color:var(--text-muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:1px;">Timepiece</th>
+              <th style="padding:18px 24px; color:var(--text-muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:1px;">Price</th>
+              <th style="padding:18px 24px; color:var(--text-muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:1px;">Quantity</th>
+              <th style="padding:18px 24px; color:var(--text-muted); font-size:0.78rem; text-transform:uppercase; letter-spacing:1px;">Subtotal</th>
+              <th style="padding:18px 24px;"></th>
+            </tr>
+          </thead>
+          <tbody id="cart-page-table-body">
+            <!-- Injected by cart.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Order Summary Card -->
+      <div style="background:var(--bg-secondary); border:1px solid var(--border-gold); border-radius:var(--radius-lg); padding:30px; box-shadow:var(--gold-glow);">
+        <h3 style="font-size:1.25rem; margin-bottom:20px; border-bottom:1px solid var(--border-subtle); padding-bottom:14px;">Order Summary</h3>
+        
+        <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:0.9rem; color:var(--text-muted);">
+          <span>Subtotal:</span>
+          <strong id="cart-page-subtotal" style="color:var(--text-main);">$0</strong>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:0.9rem; color:var(--text-muted);">
+          <span>Armored Delivery & Transit:</span>
+          <strong style="color:#34D399;">COMPLIMENTARY</strong>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; margin-bottom:16px; font-size:0.9rem; color:var(--text-muted);">
+          <span>Estimated Luxury Tax (5%):</span>
+          <span style="color:var(--text-main);">Included in Total</span>
+        </div>
+
+        <div style="border-top:1px solid var(--border-subtle); padding-top:16px; margin-top:16px; display:flex; justify-content:space-between; align-items:baseline; margin-bottom:24px;">
+          <span style="font-size:1.1rem; font-weight:600;">Total Amount:</span>
+          <span id="cart-page-total" style="font-size:1.8rem; font-weight:700; color:var(--gold-light); font-family:var(--font-serif);">$0</span>
+        </div>
+
+        <button id="proceed-checkout-btn" class="btn btn-primary" style="width:100%; padding:14px 20px;">
+          <i class="fas fa-lock"></i> Proceed to Checkout
+        </button>
+
+        <div style="margin-top:20px; font-size:0.75rem; color:var(--text-muted); line-height:1.6; text-align:center;">
+          <i class="fas fa-shield-alt" style="color:var(--gold-primary);"></i> Orders stored securely to Supabase database. Full certificate of authenticity and provenance provided.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div id="checkout-modal" class="modal-overlay">
+    <div class="modal-content-box" style="max-width:640px;">
+      <button id="checkout-modal-close" class="modal-close-btn">&times;</button>
+      <span class="section-subtitle">Secure Supabase Order Submission</span>
+      <h2 style="margin:6px 0 20px;">Client Checkout & Delivery</h2>
+
+      <form id="checkout-form">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+          <div>
+            <label style="display:block; font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">Full Name *</label>
+            <input type="text" id="co-name" required placeholder="Abid Al-Sayed" style="width:100%; background:var(--bg-card); border:1px solid var(--border-subtle); color:#fff; padding:10px 14px; border-radius:var(--radius-sm); outline:none;">
+          </div>
+          <div>
+            <label style="display:block; font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">Email Address *</label>
+            <input type="email" id="co-email" required placeholder="client@luxuryvault.com" style="width:100%; background:var(--bg-card); border:1px solid var(--border-subtle); color:#fff; padding:10px 14px; border-radius:var(--radius-sm); outline:none;">
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+          <div>
+            <label style="display:block; font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">Phone (Courier Contact) *</label>
+            <input type="tel" id="co-phone" required placeholder="+1 (555) 019-2834" style="width:100%; background:var(--bg-card); border:1px solid var(--border-subtle); color:#fff; padding:10px 14px; border-radius:var(--radius-sm); outline:none;">
+          </div>
+          <div>
+            <label style="display:block; font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">Country *</label>
+            <input type="text" id="co-country" required value="United States" style="width:100%; background:var(--bg-card); border:1px solid var(--border-subtle); color:#fff; padding:10px 14px; border-radius:var(--radius-sm); outline:none;">
+          </div>
+        </div>
+
+        <div style="margin-bottom:16px;">
+          <label style="display:block; font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">Street Address for Armored Courier *</label>
+          <input type="text" id="co-address" required placeholder="740 Park Avenue, Penthouse B" style="width:100%; background:var(--bg-card); border:1px solid var(--border-subtle); color:#fff; padding:10px 14px; border-radius:var(--radius-sm); outline:none;">
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px;">
+          <div>
+            <label style="display:block; font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">City</label>
+            <input type="text" id="co-city" placeholder="New York" style="width:100%; background:var(--bg-card); border:1px solid var(--border-subtle); color:#fff; padding:10px 14px; border-radius:var(--radius-sm); outline:none;">
+          </div>
+          <div>
+            <label style="display:block; font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">Postal / ZIP Code</label>
+            <input type="text" id="co-zip" placeholder="10021" style="width:100%; background:var(--bg-card); border:1px solid var(--border-subtle); color:#fff; padding:10px 14px; border-radius:var(--radius-sm); outline:none;">
+          </div>
+        </div>
+
+        <div style="margin-bottom:24px;">
+          <label style="display:block; font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">Select Payment / Settlement Method</label>
+          <select id="co-payment" style="width:100%; background:var(--bg-card); border:1px solid var(--border-subtle); color:#fff; padding:10px 14px; border-radius:var(--radius-sm); outline:none;">
+            <option value="Black Card / Credit Card">Amex Centurion / Visa Infinite / Mastercard World Elite</option>
+            <option value="Bank Wire Transfer">Private Banking Wire Settlement</option>
+            <option value="Crypto (BTC/ETH/USDT)">Cryptocurrency (Bitcoin / Ethereum / USDT)</option>
+            <option value="Apple Pay">Apple Pay / Google Pay</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom:24px;">
+          <label style="display:block; font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">Special Delivery / Vault Notes</label>
+          <textarea id="co-notes" rows="2" placeholder="e.g. Schedule delivery after 2 PM; require signature verification." style="width:100%; background:var(--bg-card); border:1px solid var(--border-subtle); color:#fff; padding:10px 14px; border-radius:var(--radius-sm); outline:none; font-family:inherit;"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; padding:14px 20px;">
+          <i class="fas fa-lock"></i> Authorize & Place Order
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Abid Store Haute Horlogerie.</div>
+        <a href="admin.html">Admin Portal</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Supabase CDN & JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/products-data.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bespoke Watch Builder | Abid Store Haute Horlogerie</title>
+  <meta name="description" content="Custom build and configure your bespoke luxury watch with interactive SVG visualizer, precious metals, and laser engraving at Abid Store.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/builder.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-highlights">
+        <span><i class="fas fa-tools"></i> Abid Bespoke Horology Atelier</span>
+        <span><i class="fas fa-certificate"></i> Hand-Assembled in Switzerland</span>
+      </div>
+      <div class="top-bar-actions">
+        <div id="supabase-pill" class="supabase-pill">
+          <span class="dot"></span> Supabase Connected
+        </div>
+        <select class="currency-select" aria-label="Select Currency">
+          <option value="USD">USD ($)</option>
+          <option value="EUR">EUR (€)</option>
+          <option value="GBP">GBP (£)</option>
+          <option value="AED">AED (د.إ)</option>
+        </select>
+        <a href="admin.html" style="color:var(--text-muted); font-size:0.75rem;"><i class="fas fa-sliders-h"></i> Admin</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo-link">
+        <img src="assets/logo.svg" alt="Abid Store" class="brand-logo-img">
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="catalog.html" class="nav-link">All Brands</a>
+        <a href="watch-builder.html" class="nav-link active">
+          Watch Builder <span class="nav-badge-builder">CUSTOM</span>
+        </a>
+        <a href="cart.html" class="nav-link">Shopping Bag</a>
+        <a href="admin.html" class="nav-link">Store Builder</a>
+      </nav>
+      <div class="header-actions">
+        <a href="#" class="header-icon-btn cart-open-trigger" title="Shopping Bag">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-counter">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <div class="builder-page-header">
+    <div class="container">
+      <span class="section-subtitle">Custom Watchmaker Studio</span>
+      <h1>Interactive <span class="gold-text">Watch Builder</span></h1>
+      <p style="color:var(--text-muted); max-width:640px; margin:0 auto;">
+        Design your one-of-a-kind master horology timepiece. Real-time visual updates, Swiss movement selection, and laser-engraved caseback stored directly in your Supabase database.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Workspace -->
+  <div class="container">
+    <div class="builder-workspace">
+      <!-- Left Stage: SVG Visualizer -->
+      <div class="builder-stage-container">
+        <!-- View Toggle (Dial / Caseback) -->
+        <div class="stage-view-toggles">
+          <button id="view-front-btn" class="stage-toggle-btn active">Dial Face View</button>
+          <button id="view-back-btn" class="stage-toggle-btn">Exhibition Caseback</button>
+        </div>
+
+        <!-- SVG Live Render Viewport -->
+        <div id="watch-svg-viewport" class="watch-svg-viewport">
+          <!-- Rendered dynamically by watch-builder.js -->
+        </div>
+
+        <!-- Live Price Indicator -->
+        <div class="stage-price-indicator">
+          <div class="stage-price-label">Configured Total Price</div>
+          <div id="stage-price-amount" class="stage-price-amount">$5,700</div>
+          <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">
+            <i class="fas fa-shield-alt" style="color:var(--gold-primary);"></i> Certified Chronometer • 5-Year Guarantee
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Controls: Customizer Steps -->
+      <div class="builder-controls-panel">
+        
+        <!-- Step 1: Case Material -->
+        <div class="config-step">
+          <div class="config-step-title">
+            <h3>1. Case Metal & Material</h3>
+            <span class="step-badge">Step 1 of 6</span>
+          </div>
+          <div class="options-grid">
+            <div class="config-card active" data-case="steel">
+              <div class="card-swatch-circle" style="background:#B0B7C3;"></div>
+              <div class="card-opt-title">Oystersteel 904L</div>
+              <div class="card-opt-delta">Included</div>
+            </div>
+            <div class="config-card" data-case="gold">
+              <div class="card-swatch-circle" style="background:linear-gradient(135deg, #F8E5A7, #D4AF37);"></div>
+              <div class="card-opt-title">18K Yellow Gold</div>
+              <div class="card-opt-delta">+$6,200</div>
+            </div>
+            <div class="config-card" data-case="everose">
+              <div class="card-swatch-circle" style="background:linear-gradient(135deg, #FADBD8, #D98880);"></div>
+              <div class="card-opt-title">18K Everose Gold</div>
+              <div class="card-opt-delta">+$6,800</div>
+            </div>
+            <div class="config-card" data-case="titanium">
+              <div class="card-swatch-circle" style="background:#6C757D;"></div>
+              <div class="card-opt-title">Grade 5 Titanium</div>
+              <div class="card-opt-delta">+$2,100</div>
+            </div>
+            <div class="config-card" data-case="carbon">
+              <div class="card-swatch-circle" style="background:#1A1D24;"></div>
+              <div class="card-opt-title">DLC Carbon Black</div>
+              <div class="card-opt-delta">+$2,800</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Dial Face -->
+        <div class="config-step">
+          <div class="config-step-title">
+            <h3>2. Dial Color & Finish</h3>
+            <span class="step-badge">Step 2 of 6</span>
+          </div>
+          <div class="options-grid">
+            <div class="config-card active" data-dial="blue">
+              <div class="card-swatch-circle" style="background:radial-gradient(circle, #1B385C, #0E213D);"></div>
+              <div class="card-opt-title">Royal Blue</div>
+              <div class="card-opt-delta">+$400</div>
+            </div>
+            <div class="config-card" data-dial="emerald">
+              <div class="card-swatch-circle" style="background:radial-gradient(circle, #18523A, #08291B);"></div>
+              <div class="card-opt-title">Emerald Green</div>
+              <div class="card-opt-delta">+$600</div>
+            </div>
+            <div class="config-card" data-dial="obsidian">
+              <div class="card-swatch-circle" style="background:#08090C;"></div>
+              <div class="card-opt-title">Obsidian Black</div>
+              <div class="card-opt-delta">Included</div>
+            </div>
+            <div class="config-card" data-dial="champagne">
+              <div class="card-swatch-circle" style="background:radial-gradient(circle, #F8E5A7, #AA771C);"></div>
+              <div class="card-opt-title">Champagne Gold</div>
+              <div class="card-opt-delta">+$500</div>
+            </div>
+            <div class="config-card" data-dial="silver">
+              <div class="card-swatch-circle" style="background:radial-gradient(circle, #FFF, #B4B9C2);"></div>
+              <div class="card-opt-title">Silver Opaline</div>
+              <div class="card-opt-delta">+$300</div>
+            </div>
+            <div class="config-card" data-dial="skeleton">
+              <div class="card-swatch-circle" style="background:#1B1E28; border:1px dashed #D4AF37;"></div>
+              <div class="card-opt-title">Skeleton Openwork</div>
+              <div class="card-opt-delta">+$1,800</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Bezel Style -->
+        <div class="config-step">
+          <div class="config-step-title">
+            <h3>3. Bezel Architecture</h3>
+            <span class="step-badge">Step 3 of 6</span>
+          </div>
+          <div class="options-grid">
+            <div class="config-card active" data-bezel="fluted">
+              <div class="card-opt-title">Fluted Bezel</div>
+              <div class="card-opt-delta">+$800</div>
+            </div>
+            <div class="config-card" data-bezel="diver">
+              <div class="card-opt-title">Ceramic 60-Min Scale</div>
+              <div class="card-opt-delta">+$950</div>
+            </div>
+            <div class="config-card" data-bezel="smooth">
+              <div class="card-opt-title">Smooth High-Polish</div>
+              <div class="card-opt-delta">Included</div>
+            </div>
+            <div class="config-card" data-bezel="diamond">
+              <div class="card-opt-title">Diamond Baguette Halo</div>
+              <div class="card-opt-delta">+$4,500</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Strap / Bracelet -->
+        <div class="config-step">
+          <div class="config-step-title">
+            <h3>4. Strap / Bracelet</h3>
+            <span class="step-badge">Step 4 of 6</span>
+          </div>
+          <div class="options-grid">
+            <div class="config-card active" data-strap="oyster">
+              <div class="card-opt-title">3-Link Oyster</div>
+              <div class="card-opt-delta">Included</div>
+            </div>
+            <div class="config-card" data-strap="jubilee">
+              <div class="card-opt-title">5-Link Jubilee</div>
+              <div class="card-opt-delta">+$750</div>
+            </div>
+            <div class="config-card" data-strap="alligator">
+              <div class="card-opt-title">Alligator Leather</div>
+              <div class="card-opt-delta">+$550</div>
+            </div>
+            <div class="config-card" data-strap="rubber">
+              <div class="card-opt-title">Oysterflex Rubber</div>
+              <div class="card-opt-delta">+$400</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5: Movement Engine -->
+        <div class="config-step">
+          <div class="config-step-title">
+            <h3>5. Horological Calibre</h3>
+            <span class="step-badge">Step 5 of 6</span>
+          </div>
+          <div class="options-grid" style="grid-template-columns:1fr 1fr 1fr;">
+            <div class="config-card active" data-movement="automatic">
+              <div class="card-opt-title">Calibre 3235 Auto</div>
+              <div style="font-size:0.68rem; color:var(--text-muted);">70-hr power reserve</div>
+              <div class="card-opt-delta">Included</div>
+            </div>
+            <div class="config-card" data-movement="chrono">
+              <div class="card-opt-title">Calibre 4130 Chrono</div>
+              <div style="font-size:0.68rem; color:var(--text-muted);">Column wheel chronograph</div>
+              <div class="card-opt-delta">+$2,400</div>
+            </div>
+            <div class="config-card" data-movement="tourbillon">
+              <div class="card-opt-title">Flying Tourbillon</div>
+              <div style="font-size:0.68rem; color:var(--text-muted);">Grand complication</div>
+              <div class="card-opt-delta">+$12,500</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 6: Custom Laser Engraving -->
+        <div class="config-step">
+          <div class="config-step-title">
+            <h3>6. Custom Laser Engraving</h3>
+            <span class="step-badge">Step 6 of 6</span>
+          </div>
+          <div class="engraving-box">
+            <input type="text" id="engraving-text-input" class="engraving-input" maxlength="20" placeholder="e.g. ABID VIP 2026" value="ABID VIP 2026">
+            <div class="engraving-hint">
+              Engraved directly into the sapphire exhibition caseback rim. Up to 20 uppercase characters.
+            </div>
+          </div>
+        </div>
+
+        <!-- Configuration Summary -->
+        <div style="background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:20px; margin-top:24px;">
+          <h4 style="font-size:0.95rem; margin-bottom:12px; color:var(--gold-light);">Configuration Summary</h4>
+          <div id="builder-summary-details">
+            <!-- Injected by watch-builder.js -->
+          </div>
+        </div>
+
+        <!-- Action Bar -->
+        <div class="builder-action-bar">
+          <button class="btn btn-primary" style="width:100%;" onclick="addCustomWatchToCart()">
+            <i class="fas fa-shopping-bag"></i> Acquire Bespoke Build
+          </button>
+          <button class="btn btn-outline" style="width:100%;" onclick="saveBespokeConfig()">
+            <i class="fas fa-save"></i> Save Configuration to Supabase
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Abid Store Haute Horlogerie Atelier.</div>
+        <div style="display:flex; gap:16px;">
+          <a href="catalog.html">All Brands</a>
+          <a href="cart.html">Bag</a>
+          <a href="admin.html">Admin</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-out Cart Drawer -->
+  <div id="cart-drawer-backdrop" class="drawer-backdrop"></div>
+  <aside id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3>Your Shopping Bag</h3>
+      <button id="cart-drawer-close" class="close-drawer-btn">&times;</button>
+    </div>
+    <div id="cart-drawer-items" class="cart-drawer-body"></div>
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-line">
+        <span>Subtotal:</span>
+        <span id="cart-drawer-subtotal">$0</span>
+      </div>
+      <a href="cart.html" class="btn btn-primary" style="width:100%;">Proceed to Checkout</a>
+    </div>
+  </aside>
+
+  <!-- Supabase CDN & JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/products-data.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/watch-builder.js"></script>
+</body>
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abid Store | Haute Horlogerie & All-Brand Luxury Watches</title>
+  <meta name="description" content="Discover Abid Store - The premier luxury destination for Rolex, Patek Philippe, Audemars Piguet, Omega, and custom bespoke timepieces.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Google Fonts: Cinzel, Playfair Display & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Core & Page Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/catalog.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-highlights">
+        <span><i class="fas fa-shield-alt"></i> 100% Certified Authentic</span>
+        <span><i class="fas fa-plane"></i> Complimentary Insured Global Courier</span>
+        <span><i class="fas fa-certificate"></i> 5-Year Master Warranty</span>
+      </div>
+      <div class="top-bar-actions">
+        <div id="supabase-pill" class="supabase-pill">
+          <span class="dot"></span> Supabase Connected
+        </div>
+        <select class="currency-select" aria-label="Select Currency">
+          <option value="USD">USD ($)</option>
+          <option value="EUR">EUR (€)</option>
+          <option value="GBP">GBP (£)</option>
+          <option value="AED">AED (د.إ)</option>
+        </select>
+        <a href="admin.html" style="color:var(--text-muted); font-size:0.75rem;"><i class="fas fa-sliders-h"></i> Store Builder / Admin</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Site Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Abid Store Luxury Logo -->
+      <a href="index.html" class="brand-logo-link">
+        <img src="assets/logo.svg" alt="Abid Store Haute Horlogerie" class="brand-logo-img">
+      </a>
+
+      <!-- Main Navigation Links -->
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="catalog.html" class="nav-link">All Brands</a>
+        <a href="catalog.html?category=Diver" class="nav-link">Diver</a>
+        <a href="catalog.html?category=Chronograph" class="nav-link">Chronographs</a>
+        <a href="watch-builder.html" class="nav-link">
+          Watch Builder <span class="nav-badge-builder">CUSTOM</span>
+        </a>
+        <a href="#about-us" class="nav-link">Maison</a>
+        <a href="#contact-vip" class="nav-link">Concierge</a>
+      </nav>
+
+      <!-- Action Icons -->
+      <div class="header-actions">
+        <a href="catalog.html" class="header-icon-btn" title="Search Timepieces">
+          <i class="fas fa-search"></i>
+        </a>
+        <a href="#" class="header-icon-btn cart-open-trigger" title="Shopping Bag">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-counter">0</span>
+        </a>
+        <button class="mobile-menu-toggle" aria-label="Open Navigation Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text-col">
+          <div class="hero-tagline">
+            <i class="fas fa-crown"></i> Haute Horlogerie • Swiss Masterpieces
+          </div>
+          <h1 class="hero-title">
+            The Pinnacle of <br>
+            <span class="gold-text">Luxury Timepieces</span>
+          </h1>
+          <p class="hero-description">
+            Welcome to <strong>Abid Store</strong>. Curating the world’s most sought-after brand watches — from Rolex and Patek Philippe to bespoke custom-engineered timepieces powered by live Supabase horological inventory.
+          </p>
+          <div class="hero-actions">
+            <a href="catalog.html" class="btn btn-primary">
+              <i class="fas fa-compass"></i> Explore All Brands
+            </a>
+            <a href="watch-builder.html" class="btn btn-outline">
+              <i class="fas fa-tools"></i> Launch Watch Builder
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h4>100%</h4>
+              <p>Authentic Certified</p>
+            </div>
+            <div class="stat-item">
+              <h4>12+</h4>
+              <p>Iconic Brands</p>
+            </div>
+            <div class="stat-item">
+              <h4>5 YR</h4>
+              <p>Global Warranty</p>
+            </div>
+            <div class="stat-item">
+              <h4>24/7</h4>
+              <p>VIP Concierge</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-watch-display">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1000&q=80" alt="Rolex Submariner Date Kermit">
+            <div class="hero-floating-card">
+              <div>
+                <div class="floating-card-brand">Featured Acquisition</div>
+                <div class="floating-card-title">Rolex Submariner "Kermit"</div>
+                <div style="font-size:0.75rem; color:var(--text-muted);">Calibre 3235 • 300m / 1000ft</div>
+              </div>
+              <div class="floating-card-price">$15,800</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Luxury Brand Ribbon -->
+  <section class="brand-strip-section">
+    <div class="container">
+      <div class="brand-strip-header">Featured Haute Horlogerie Maisons</div>
+      <div class="brand-badges-row">
+        <a href="catalog.html?brand=Rolex" class="brand-badge">Rolex</a>
+        <a href="catalog.html?brand=Patek Philippe" class="brand-badge">Patek Philippe</a>
+        <a href="catalog.html?brand=Audemars Piguet" class="brand-badge">Audemars Piguet</a>
+        <a href="catalog.html?brand=Omega" class="brand-badge">Omega</a>
+        <a href="catalog.html?brand=Cartier" class="brand-badge">Cartier</a>
+        <a href="catalog.html?brand=TAG Heuer" class="brand-badge">TAG Heuer</a>
+        <a href="catalog.html?brand=Breitling" class="brand-badge">Breitling</a>
+        <a href="catalog.html?brand=IWC Schaffhausen" class="brand-badge">IWC</a>
+        <a href="catalog.html?brand=Jaeger-LeCoultre" class="brand-badge">Jaeger-LeCoultre</a>
+        <a href="catalog.html?brand=Tissot" class="brand-badge">Tissot</a>
+        <a href="catalog.html?brand=Seiko" class="brand-badge">Seiko</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Timepieces Grid -->
+  <section class="section-padding" id="curated-collection">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-subtitle">Curated Masterpieces</span>
+        <h2 class="section-title">Iconic Watch Collections</h2>
+        <p class="section-desc">Each timepiece in our vault undergoes a rigorous 40-point diagnostic inspection and includes certified provenance documentation.</p>
+      </div>
+
+      <!-- Quick Brand Filter Pills -->
+      <div style="display:flex; justify-content:center; gap:12px; margin-bottom:40px; flex-wrap:wrap;">
+        <button class="brand-badge active" onclick="filterHomeWatches('all', this)">All Collections</button>
+        <button class="brand-badge" onclick="filterHomeWatches('Rolex', this)">Rolex</button>
+        <button class="brand-badge" onclick="filterHomeWatches('Patek Philippe', this)">Patek Philippe</button>
+        <button class="brand-badge" onclick="filterHomeWatches('Audemars Piguet', this)">Audemars Piguet</button>
+        <button class="brand-badge" onclick="filterHomeWatches('Omega', this)">Omega</button>
+        <button class="brand-badge" onclick="filterHomeWatches('Cartier', this)">Cartier</button>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="home-products-grid" class="products-grid">
+        <!-- Rendered dynamically from Supabase/Local Database -->
+      </div>
+
+      <div style="text-align:center; margin-top:50px;">
+        <a href="catalog.html" class="btn btn-outline">
+          View Complete All-Brand Vault (16+ Watches) <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bespoke Watch Builder Banner -->
+  <section class="container">
+    <div class="builder-cta-banner">
+      <div class="builder-cta-grid">
+        <div class="builder-cta-content">
+          <span class="section-subtitle">Online Watch Customizer</span>
+          <h2>Design Your Bespoke <span class="gold-text">Signature Watch</span></h2>
+          <p>
+            Experience our proprietary <strong>Interactive Watch Builder</strong>. Select precious metals, guilloché sunburst dials, custom ceramic or diamond bezels, hand-finished bracelets, and add your own laser-engraved monogram — saved directly to Supabase.
+          </p>
+          <div class="builder-feature-pills">
+            <span class="feature-pill"><i class="fas fa-gem"></i> 18K Gold & Platinum</span>
+            <span class="feature-pill"><i class="fas fa-palette"></i> 6 Sunburst Dial Colors</span>
+            <span class="feature-pill"><i class="fas fa-cog"></i> Flying Tourbillon Movement</span>
+            <span class="feature-pill"><i class="fas fa-signature"></i> Custom Laser Engraving</span>
+          </div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap;">
+            <a href="watch-builder.html" class="btn btn-primary">
+              <i class="fas fa-sliders-h"></i> Open Watch Builder
+            </a>
+            <a href="catalog.html" class="btn btn-outline">Browse Pre-Configured</a>
+          </div>
+        </div>
+
+        <div class="builder-cta-preview">
+          <div class="watch-render-badge">
+            <svg class="builder-svg-teaser" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="44" fill="none" stroke="#D4AF37" stroke-width="2" stroke-dasharray="2 4"/>
+              <circle cx="50" cy="50" r="38" fill="#141824" stroke="#D4AF37" stroke-width="1"/>
+              <polygon points="50,18 73,31 73,59 50,72 27,59 27,31" fill="none" stroke="#D4AF37" stroke-width="1.2" opacity="0.4"/>
+              <line x1="50" y1="50" x2="62" y2="40" stroke="#FFF" stroke-width="2"/>
+              <line x1="50" y1="50" x2="38" y2="30" stroke="#D4AF37" stroke-width="1.5"/>
+              <circle cx="50" cy="50" r="3" fill="#D4AF37"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Abid Store Experience (Pillars) -->
+  <section class="section-padding" id="about-us" style="background:#06070A;">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-subtitle">Maison Heritage</span>
+        <h2 class="section-title">Why Acquire at Abid Store</h2>
+        <p class="section-desc">We combine centuries of Swiss horological tradition with modern cloud-synchronized vault security.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:28px;">
+        <div style="background:var(--bg-secondary); border:1px solid var(--border-subtle); padding:32px 24px; border-radius:var(--radius-lg); text-align:center;">
+          <div style="width:56px; height:56px; border-radius:50%; background:rgba(212,175,55,0.1); border:1px solid var(--border-gold); color:var(--gold-primary); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:1.4rem;">
+            <i class="fas fa-award"></i>
+          </div>
+          <h3 style="font-size:1.15rem; margin-bottom:10px;">Certified Authenticity</h3>
+          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.6;">Every timepiece is inspected by certified Swiss master watchmakers, accompanied by original box and papers.</p>
+        </div>
+
+        <div style="background:var(--bg-secondary); border:1px solid var(--border-subtle); padding:32px 24px; border-radius:var(--radius-lg); text-align:center;">
+          <div style="width:56px; height:56px; border-radius:50%; background:rgba(212,175,55,0.1); border:1px solid var(--border-gold); color:var(--gold-primary); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:1.4rem;">
+            <i class="fas fa-truck-moving"></i>
+          </div>
+          <h3 style="font-size:1.15rem; margin-bottom:10px;">Armored Global Transit</h3>
+          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.6;">Fully insured discreet delivery via Ferrari Logistics and Malca-Amit specialized armored couriers directly to your door.</p>
+        </div>
+
+        <div style="background:var(--bg-secondary); border:1px solid var(--border-subtle); padding:32px 24px; border-radius:var(--radius-lg); text-align:center;">
+          <div style="width:56px; height:56px; border-radius:50%; background:rgba(212,175,55,0.1); border:1px solid var(--border-gold); color:var(--gold-primary); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:1.4rem;">
+            <i class="fas fa-database"></i>
+          </div>
+          <h3 style="font-size:1.15rem; margin-bottom:10px;">Supabase Cloud Backend</h3>
+          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.6;">Real-time inventory synchronization, instant customer order processing, and bespoke design persistence powered by Supabase.</p>
+        </div>
+
+        <div style="background:var(--bg-secondary); border:1px solid var(--border-subtle); padding:32px 24px; border-radius:var(--radius-lg); text-align:center;">
+          <div style="width:56px; height:56px; border-radius:50%; background:rgba(212,175,55,0.1); border:1px solid var(--border-gold); color:var(--gold-primary); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:1.4rem;">
+            <i class="fas fa-gem"></i>
+          </div>
+          <h3 style="font-size:1.15rem; margin-bottom:10px;">5-Year Warranty</h3>
+          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.6;">Comprehensive internal mechanical protection with zero-deductible complimentary servicing worldwide.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIP Testimonials -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-subtitle">Client Accolades</span>
+        <h2 class="section-title">The Collector’s Experience</h2>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:28px;">
+        <div style="background:var(--bg-card); border:1px solid var(--border-subtle); padding:28px; border-radius:var(--radius-md);">
+          <div style="color:var(--gold-primary); margin-bottom:14px; font-size:0.9rem;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p style="color:var(--text-muted); font-style:italic; line-height:1.7; margin-bottom:18px;">
+            "Acquiring my Patek Philippe Nautilus through Abid Store was flawless. The armored delivery arrived within 48 hours with all original archive papers."
+          </p>
+          <strong style="color:var(--text-main); display:block;">Julian V. Montgomery</strong>
+          <span style="font-size:0.78rem; color:var(--gold-primary);">Zurich, Switzerland</span>
+        </div>
+
+        <div style="background:var(--bg-card); border:1px solid var(--border-subtle); padding:28px; border-radius:var(--radius-md);">
+          <div style="color:var(--gold-primary); margin-bottom:14px; font-size:0.9rem;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p style="color:var(--text-muted); font-style:italic; line-height:1.7; margin-bottom:18px;">
+            "The online Watch Builder tool is sublime! I customized an 18K Everose Gold timepiece with my family crest engraved. The craftsmanship exceeded expectations."
+          </p>
+          <strong style="color:var(--text-main); display:block;">Sheikh Tariq Al-Mansoor</strong>
+          <span style="font-size:0.78rem; color:var(--gold-primary);">Dubai, UAE</span>
+        </div>
+
+        <div style="background:var(--bg-card); border:1px solid var(--border-subtle); padding:28px; border-radius:var(--radius-md);">
+          <div style="color:var(--gold-primary); margin-bottom:14px; font-size:0.9rem;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p style="color:var(--text-muted); font-style:italic; line-height:1.7; margin-bottom:18px;">
+            "Superb inventory of hard-to-find Rolex Daytonas. Transparent Supabase integration and instant checkout confirmation make this the best online horology store."
+          </p>
+          <strong style="color:var(--text-main); display:block;">Marcus Sterling</strong>
+          <span style="font-size:0.78rem; color:var(--gold-primary);">London, United Kingdom</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIP Concierge / Newsletter -->
+  <section class="section-padding" id="contact-vip" style="background:#07080C; border-top:1px solid var(--border-subtle);">
+    <div class="container" style="max-width:720px; text-align:center;">
+      <span class="section-subtitle">Private Client Services</span>
+      <h2 style="font-size:2.4rem; margin-bottom:14px;">Join the Abid Store VIP Club</h2>
+      <p style="color:var(--text-muted); margin-bottom:30px; font-size:0.95rem;">
+        Receive private allocations on rare Rolex, Patek Philippe & Audemars Piguet releases before public listing.
+      </p>
+      <form id="newsletter-form" style="display:flex; gap:10px; max-width:540px; margin:0 auto;">
+        <input type="email" placeholder="Enter your private email address" required style="flex:1; background:var(--bg-card); border:1px solid var(--border-subtle); color:#fff; padding:14px 20px; border-radius:var(--radius-sm); outline:none;">
+        <button type="submit" class="btn btn-primary">Join VIP List</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <a href="index.html">
+            <img src="assets/logo.svg" alt="Abid Store" style="height:44px; width:auto; margin-bottom:16px;">
+          </a>
+          <p>
+            Abid Store is an independent purveyor of fine Haute Horlogerie, curating certified authentic timepieces from Switzerland's most venerable watchmakers.
+          </p>
+          <div style="display:flex; gap:16px; margin-top:20px; font-size:1.2rem; color:var(--text-muted);">
+            <a href="#" style="color:var(--gold-primary);"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Prestige Brands</h4>
+          <ul>
+            <li><a href="catalog.html?brand=Rolex">Rolex</a></li>
+            <li><a href="catalog.html?brand=Patek Philippe">Patek Philippe</a></li>
+            <li><a href="catalog.html?brand=Audemars Piguet">Audemars Piguet</a></li>
+            <li><a href="catalog.html?brand=Omega">Omega</a></li>
+            <li><a href="catalog.html?brand=Cartier">Cartier</a></li>
+            <li><a href="catalog.html?brand=TAG Heuer">TAG Heuer</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Bespoke & Services</h4>
+          <ul>
+            <li><a href="watch-builder.html">Interactive Watch Builder</a></li>
+            <li><a href="catalog.html">All Brand Catalog</a></li>
+            <li><a href="cart.html">View Shopping Bag</a></li>
+            <li><a href="admin.html">Store Builder & Admin</a></li>
+            <li><a href="supabase/README.md">Supabase Database Setup</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Concierge & Vault</h4>
+          <ul>
+            <li><i class="fas fa-map-marker-alt" style="color:var(--gold-primary); margin-right:8px;"></i> Geneva • New York • Dubai</li>
+            <li><i class="fas fa-phone" style="color:var(--gold-primary); margin-right:8px;"></i> +1 (800) 845-ABID</li>
+            <li><i class="fas fa-envelope" style="color:var(--gold-primary); margin-right:8px;"></i> concierge@abidstore.com</li>
+            <li><i class="fas fa-shield-alt" style="color:var(--gold-primary); margin-right:8px;"></i> Encrypted SSL & Supabase RLS</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Abid Store Haute Horlogerie. All rights reserved.</div>
+        <div style="display:flex; align-items:center; gap:20px;">
+          <span>Powered by Supabase DB & Vanilla Web Architecture</span>
+          <a href="admin.html" style="color:var(--gold-primary);"><i class="fas fa-lock"></i> Admin Portal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-out Cart Drawer -->
+  <div id="cart-drawer-backdrop" class="drawer-backdrop"></div>
+  <aside id="cart-drawer" class="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3>Your Shopping Bag</h3>
+      <button id="cart-drawer-close" class="close-drawer-btn" aria-label="Close Bag">&times;</button>
+    </div>
+    <div id="cart-drawer-items" class="cart-drawer-body">
+      <!-- Injected by CartService -->
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-line">
+        <span>Subtotal:</span>
+        <span id="cart-drawer-subtotal">$0</span>
+      </div>
+      <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:16px;">
+        Complimentary Armored Courier & Insurance Included
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <a href="cart.html" class="btn btn-primary" style="width:100%;">
+          <i class="fas fa-lock"></i> Proceed to Checkout
+        </a>
+        <a href="catalog.html" class="btn btn-outline" style="width:100%;">Continue Shopping</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Supabase Official JS SDK from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Application Logic -->
+  <script src="js/products-data.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Homepage Specific Featured Render
+    let homeProducts = [];
+
+    async function loadHomeWatches() {
+      const grid = document.getElementById("home-products-grid");
+      if (!grid) return;
+      grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px;"><i class="fas fa-spinner fa-spin" style="font-size:2rem; color:var(--gold-primary);"></i><p style="margin-top:12px;">Loading curated timepieces...</p></div>`;
+
+      homeProducts = await window.abidSupabase.getProducts();
+      renderHomeWatches(homeProducts.slice(0, 8));
+    }
+
+    function renderHomeWatches(watches) {
+      const grid = document.getElementById("home-products-grid");
+      if (!grid) return;
+
+      grid.innerHTML = watches.map(watch => `
+        <div class="watch-card">
+          <span class="watch-badge-tag">${watch.category || 'Luxury'}</span>
+          <div class="watch-img-box">
+            <img src="${watch.image_url}" alt="${watch.title}">
+            <div class="watch-overlay-actions">
+              <button class="card-action-btn" onclick="openQuickView('${watch.id}')">
+                <i class="fas fa-eye"></i> Quick View
+              </button>
+              <a href="product-details.html?id=${watch.id}" class="card-action-btn">
+                <i class="fas fa-info-circle"></i> Details
+              </a>
+            </div>
+          </div>
+          <div class="watch-card-body">
+            <span class="watch-card-brand">${watch.brand}</span>
+            <h3 class="watch-card-title">${watch.title}</h3>
+            <div class="watch-card-specs">
+              <span><i class="fas fa-cog"></i> ${watch.movement ? watch.movement.split(' ')[0] : 'Auto'}</span>
+              <span><i class="fas fa-arrows-alt-h"></i> ${watch.case_diameter || '41mm'}</span>
+              <span><i class="fas fa-tint"></i> ${watch.water_resistance ? watch.water_resistance.split(' ')[0] : '100m'}</span>
+            </div>
+            <div class="watch-card-footer">
+              <div class="watch-price-box">
+                <span class="current-price">${formatPrice(watch.price)}</span>
+                ${watch.original_price ? `<span class="original-price">${formatPrice(watch.original_price)}</span>` : ''}
+              </div>
+              <button class="add-cart-btn-icon" title="Add to Bag" onclick="CartService.addItem(${JSON.stringify(watch).replace(/"/g, '&quot;')})">
+                <i class="fas fa-shopping-bag"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function filterHomeWatches(brand, btn) {
+      document.querySelectorAll(".brand-strip-section .brand-badge, #curated-collection .brand-badge").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      if (brand === "all") {
+        renderHomeWatches(homeProducts.slice(0, 8));
+      } else {
+        const filtered = homeProducts.filter(w => w.brand === brand);
+        renderHomeWatches(filtered);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadHomeWatches);
+  </script>
+</body>
+</html>

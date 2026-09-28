@@ -1,0 +1,237 @@
+/* ==========================================================================
+   ABID STORE - INTERACTIVE WATCH BUILDER & CONFIGURATOR STYLES
+   ========================================================================== */
+
+.builder-page-header {
+  text-align: center;
+  padding: 60px 0 30px;
+  background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.12) 0%, transparent 60%);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.builder-page-header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.builder-workspace {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  margin: 40px 0 80px 0;
+  align-items: start;
+}
+
+/* 3D/Visual Preview Stage */
+.builder-stage-container {
+  background: radial-gradient(circle at center, #151A27 0%, #0A0C13 100%);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-xl);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: sticky;
+  top: 100px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), var(--gold-glow);
+}
+
+.stage-view-toggles {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px;
+  border-radius: 30px;
+  border: 1px solid var(--border-subtle);
+}
+
+.stage-toggle-btn {
+  padding: 6px 18px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stage-toggle-btn.active {
+  background: var(--gold-gradient);
+  color: #08090C;
+  font-weight: 700;
+}
+
+.watch-svg-viewport {
+  width: 100%;
+  max-width: 440px;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.live-watch-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7));
+  transition: all 0.4s ease;
+}
+
+.stage-price-indicator {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.stage-price-label {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stage-price-amount {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  font-family: var(--font-serif);
+}
+
+/* Configurator Controls Panel */
+.builder-controls-panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+}
+
+.config-step {
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.config-step:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.config-step-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.config-step-title h3 {
+  font-size: 1.15rem;
+  color: var(--text-main);
+}
+
+.config-step-title .step-badge {
+  font-size: 0.72rem;
+  color: var(--gold-primary);
+  background: rgba(212, 175, 55, 0.1);
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 1px solid var(--border-gold);
+}
+
+/* Swatch & Option Grids */
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.config-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  cursor: pointer;
+  text-align: center;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.config-card:hover {
+  border-color: var(--gold-dark);
+  background: var(--bg-card-hover);
+}
+
+.config-card.active {
+  border-color: var(--gold-primary);
+  background: rgba(212, 175, 55, 0.08);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.2);
+}
+
+.card-swatch-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 4px;
+}
+
+.card-opt-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.card-opt-delta {
+  font-size: 0.72rem;
+  color: var(--gold-primary);
+}
+
+/* Engraving Input */
+.engraving-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.engraving-input {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.engraving-input:focus {
+  border-color: var(--gold-primary);
+  outline: none;
+}
+
+.engraving-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Builder Summary & Action Bar */
+.builder-action-bar {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (max-width: 992px) {
+  .builder-workspace {
+    grid-template-columns: 1fr;
+  }
+  .builder-stage-container {
+    position: static;
+  }
+}
